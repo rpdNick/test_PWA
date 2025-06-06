@@ -6,7 +6,7 @@ const CACHE_NAME = 'my-test-pwa-cache-v1';
 const urlsToCache = [
   'index.html',
   './style/style.css',
-  './js/script.js',
+  'js/script.js',
 ];
 
 // Подія 'install' - відбувається, коли Service Worker встановлюється
