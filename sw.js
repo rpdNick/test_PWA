@@ -4,7 +4,7 @@ const CACHE_NAME = 'my-test-pwa-cache-v1';
 
 // Список URL-адрес, які потрібно кешувати під час встановлення Service Worker
 const urlsToCache = [
-  '/test_PWA',
+  '/test_PWA/',
   'index.html',
   './style/style.css',
   './js/script.js',
