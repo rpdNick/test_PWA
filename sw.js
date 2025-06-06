@@ -8,8 +8,8 @@ const urlsToCache = [
   'index.html',
   './style/style.css',
   './js/script.js',
-  'manifest.json',
-  'sw.js',
+  '/manifest.json',
+  '/sw.js',
   // Можна додати іконки, якщо вони є. Наприклад:
   // '/icons/icon-192x192.png',
   // '/icons/icon-512x512.png'
