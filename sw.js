@@ -1,11 +1,13 @@
 // sw.js
 // Версія кешу. Змінюйте її, коли оновлюєте файли, щоб змусити Service Worker перекешувати все.
-const CACHE_NAME = 'my-test-pwa-cache-v1';
+const CACHE_NAME = 'my-test-pwa-cache-v1.1';
 
 // Список URL-адрес, які потрібно кешувати під час встановлення Service Worker
 const urlsToCache = [
+  '/',
   'index.html',
   './style/style.css',
+  './js/sctipt.js',
 ];
 
 // Подія 'install' - відбувається, коли Service Worker встановлюється
