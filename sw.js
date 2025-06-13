@@ -8,6 +8,10 @@ const urlsToCache = [
   'index.html',
   './style/style.css',
   './js/sctipt.js',
+  'icons/favicon/favicon.svg',
+  'icons/favicon/favicon-96x96.png',
+  'icons/favicon/favicon.ico',
+  'icons/favicon/apple-touch-icon.png',
 ];
 
 // Подія 'install' - відбувається, коли Service Worker встановлюється
