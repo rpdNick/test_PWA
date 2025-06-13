@@ -2,7 +2,7 @@
   "name": "Мій Тестовий PWA",
   "short_name": "Тест PWA",
   "description": "Простий тестовий Progressive Web App",
-  "start_url": "/",
+  "start_url": "/test_PWA/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007bff",
