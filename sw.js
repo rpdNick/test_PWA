@@ -7,11 +7,11 @@ const urlsToCache = [
   'testPWA/',
   'index.html',
   './style/style.css',
+  './icons/favicon/favicon.svg',
+  './icons/favicon/favicon-96x96.png',
+  './icons/favicon/favicon.ico',
+  './icons/favicon/apple-touch-icon.png',
   './js/sctipt.js',
-  'icons/favicon/favicon.svg',
-  'icons/favicon/favicon-96x96.png',
-  'icons/favicon/favicon.ico',
-  'icons/favicon/apple-touch-icon.png',
 ];
 
 // Подія 'install' - відбувається, коли Service Worker встановлюється
