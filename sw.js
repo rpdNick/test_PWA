@@ -4,14 +4,14 @@ const CACHE_NAME = 'my-test-pwa-cache-v1.2';
 
 // Список URL-адрес, які потрібно кешувати під час встановлення Service Worker
 const urlsToCache = [
-  'testPWA/',
-  'index.html',
-  './style/style.css',
-  './icons/favicon/favicon.svg',
-  './icons/favicon/favicon-96x96.png',
-  './icons/favicon/favicon.ico',
-  './icons/favicon/apple-touch-icon.png',
-  './js/sctipt.js',
+  '/test_PWA/',
+  '/test_PWA/index.html',
+  '/test_PWA/style/style.css',
+  '/test_PWA/icons/favicon/favicon.svg',
+  '/test_PWA/icons/favicon/favicon-96x96.png',
+  '/test_PWA/icons/favicon/favicon.ico',
+  '/test_PWA/icons/favicon/apple-touch-icon.png',
+  '/test_PWA/js/sctipt.js',
 ];
 
 // Подія 'install' - відбувається, коли Service Worker встановлюється
