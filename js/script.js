@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const onlineStatusElement = document.getElementById('onlineStatus');
-    const checkOnlineStatusButton = document.getElementById('checkOnlineStatus');
+    // const checkOnlineStatusButton = document.getElementById('checkOnlineStatus');
 
     function updateOnlineStatus() {
         onlineStatusElement.textContent = `Статус: ${navigator.onLine ? 'Онлайн' : 'Офлайн'}`;
@@ -15,5 +15,34 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('offline', updateOnlineStatus);
 
     // Додаємо слухача для кнопки
-    checkOnlineStatusButton.addEventListener('click', updateOnlineStatus);
+    // checkOnlineStatusButton.addEventListener('click', updateOnlineStatus);
+
+
+    // Customizing the Install Prompt:
+    let installPromptEvent; // Store the prompt event
+    let installBlick =  document.querySelector('.install_block');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();  // Prevent default prompt
+        installPromptEvent = e; // Store the event
+
+        // Show custom install banner
+       installBlick.style.display = 'flex';
+    });
+
+    document.getElementById('installApp').addEventListener('click', () => {
+        // Trigger the browser's install prompt
+        installPromptEvent.prompt();
+
+        installPromptEvent.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User installed the PWA');
+            } else {
+                console.log('User dismissed the installation');
+            }
+
+            // Hide the install banner after user interaction
+            installBlick.style.display = 'none';
+        });
+    });
 });
