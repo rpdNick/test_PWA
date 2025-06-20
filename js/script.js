@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();  // Prevent default prompt
         installPromptEvent = e; // Store the event
-
-        // Show custom install banner
+        console.log(installPromptEvent);
+        // Show custom install block
        installBlick.style.display = 'flex';
     });
 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('User dismissed the installation');
             }
 
-            // Hide the install banner after user interaction
+            // Hide the install block after user interaction
             installBlick.style.display = 'none';
         });
     });
