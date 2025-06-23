@@ -85,7 +85,7 @@ function subscribeUserToPush() {
             .then(subscription => {
                 console.log('Користувач підписався:', subscription);
                 // Надішліть об'єкт subscription на ваш бекенд
-                sendSubscriptionToServer(subscription);
+                // sendSubscriptionToServer(subscription);
             })
             .catch(error => {
                 console.error('Не вдалося підписатися на push-сповіщення:', error);
