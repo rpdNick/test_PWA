@@ -51,14 +51,28 @@ document.addEventListener('DOMContentLoaded', () => {
 // Notification request
 /*
 Надсилання пушів з https://web-push-codelab.glitch.me/
+
+Get PushSubscription from console.log:
 {
-  "title": "Привіт з Glitch!",
-  "body": "Це тестове веб-пуш повідомлення.",
-  "icon": "/icons/192.png",
+    "endpoint": "https://fcm.googleapis.com/fcm/send/f5Hfh-sras8:APA91bGgC7dU7O7pQ25_OmIPxvqL-r3Ehw1xlBa7t0y03owvBgfZjkGJHUJdxFeEeFhbkPEI79lusXamf0b8XxD_5lvQjzIL6RrIQSE1PFcCHo_alWo8Cu3QMdtwP3IHabidTvou8Yvb",
+    "expirationTime": null,
+    "keys": {
+        "p256dh": "BPzWjEiDdX24FmesMzI2n2rX95F2cvyc9-pxgoQGVz5Zi9NMguWvG_tScrwGrvZUeZDXcVpKRW0msgWVZuMXMYo",
+        "auth": "MRR3XlkIzguAxlgAMnYf_g"
+    }
+}
+
+Text to Send:
+{
+  "title": "Привіт, це PWA-тест!",
+  "body": "Ви отримали сповіщення з вашого PWA!",
+  "icon": "/test_PWA/icons/192.png",
   "data": {
-    "url": "/"
+    "url": "https://rpdnick.github.io/test_PWA/index.html",
+    "trackingId": "some_unique_id_123"
   }
 }
+
 */
 
 function askNotifications() {
@@ -84,7 +98,6 @@ function subscribeUserToPush() {
         })
             .then(subscription => {
                 console.log('Користувач підписався:', subscription);
-                // Надішліть об'єкт subscription на ваш бекенд
                 // sendSubscriptionToServer(subscription);
             })
             .catch(error => {
