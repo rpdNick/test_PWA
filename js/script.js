@@ -19,30 +19,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Customizing the Install Prompt:
-    let installPromptEvent; // Store the prompt event
-    let installBlick =  document.querySelector('.install_block');
+    let installPrompt = null;
+    let installBlock = document.querySelector('.install_block');
+    const installButton = document.querySelector("#installApp");
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();  // Prevent default prompt
-        installPromptEvent = e; // Store the event
-        console.log(installPromptEvent);
-        // Show custom install block
-       installBlick.style.display = 'flex';
+    window.addEventListener("beforeinstallprompt", (event) => {
+        event.preventDefault();
+        installPrompt = event;
+        installBlock.style.display = "flex";
     });
 
-    document.getElementById('installApp').addEventListener('click', () => {
-        // Trigger the browser's install prompt
-        installPromptEvent.prompt();
-
-        installPromptEvent.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('User installed the PWA');
-            } else {
-                console.log('User dismissed the installation');
-            }
-
-            // Hide the install block after user interaction
-            installBlick.style.display = 'none';
-        });
+    installButton.addEventListener("click", async () => {
+        if (!installPrompt) {
+            return;
+        }
+        const result = await installPrompt.prompt();
+        console.log(`Install prompt was: ${result.outcome}`);
+        disableInAppInstallPrompt();
     });
+
+    function disableInAppInstallPrompt() {
+        installPrompt = null;
+        installBlock.style.display = "none";
+    }
 });
