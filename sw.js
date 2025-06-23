@@ -89,3 +89,46 @@ self.addEventListener('fetch', event => {
       })
   );
 });
+
+
+
+
+// push notificatons service-worker
+
+self.addEventListener('push', event => {
+    const data = event.data.json();
+    console.log('Отримано push-повідомлення:', data);
+
+    const title = data.title || 'Нове сповіщення';
+    const options = {
+        body: data.body || 'Тут може бути текст вашого сповіщення.',
+        icon: data.icon || '/test_PWA/icons/192.png',
+        data: data.data || {}
+    };
+
+    event.waitUntil(
+        self.registration.showNotification(title, options)
+    );
+});
+
+self.addEventListener('notificationclick', event => {
+    console.log('Натиснуто на сповіщення:', event.notification);
+    event.notification.close();
+
+    const clickUrl = event.notification.data.url || '/';
+    event.waitUntil(
+        clients.matchAll({
+            type: 'window'
+        }).then(windowClients => {
+            for (let i = 0; i < windowClients.length; i++) {
+                const client = windowClients[i];
+                if (client.url === clickUrl && 'focus' in client) {
+                    return client.focus();
+                }
+            }
+            if (clients.openWindow) {
+                return clients.openWindow(clickUrl);
+            }
+        })
+    );
+});
