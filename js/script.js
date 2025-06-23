@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const installButton = document.querySelector("#installApp");
 
     window.addEventListener("beforeinstallprompt", (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         installPrompt = event;
         installBlock.style.display = "flex";
     });
