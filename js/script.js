@@ -35,8 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('install PWA click');
         // Trigger the browser's install prompt
         installPromptEvent.prompt();
+        console.log(installPromptEvent);
 
         installPromptEvent.userChoice.then((choiceResult) => {
+            console.log(choiceResult)
             if (choiceResult.outcome === 'accepted') {
                 console.log('User installed the PWA');
 
