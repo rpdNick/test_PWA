@@ -32,14 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     installButton.addEventListener('click', () => {
-         console.log('install PWA click');
+        console.log('install PWA click');
         // Trigger the browser's install prompt
         installPromptEvent.prompt();
 
         installPromptEvent.userChoice.then((choiceResult) => {
             if (choiceResult.outcome === 'accepted') {
                 console.log('User installed the PWA');
-                
+
                 // Hide the install block after user interaction
                 installBlock.classList.add("installed");
             } else {
