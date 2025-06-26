@@ -56,10 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (choiceResult.outcome === 'accepted') {
                         console.log('User installed the PWA');
                         updateInstallButtonVisibility();
-                        installPromptEvent = null;
                     } else {
                         console.log('User dismissed the installation');
                     }
+
+                    installPromptEvent = null;
                 });
             } else {
                 console.warn('Встановлення PWA зараз недоступне, або застосунок вже встановлено.');
