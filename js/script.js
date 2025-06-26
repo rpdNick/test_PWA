@@ -17,6 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Додаємо слухача для кнопки
     // checkOnlineStatusButton.addEventListener('click', updateOnlineStatus);
 
+    function getCurrentDisplayMode() {
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            return 'standalone';
+        } else if (window.matchMedia('(display-mode: fullscreen)').matches) {
+            return 'fullscreen';
+        } else if (window.matchMedia('(display-mode: minimal-ui)').matches) {
+            return 'minimal-ui';
+        } else {
+            // Зазвичай це означає 'browser'
+            return 'browser';
+        }
+    }
+
+    console.log('Поточний display-mode:', getCurrentDisplayMode());
+
     initPwa();
     function initPwa() {
         let installPromptEvent = null;
