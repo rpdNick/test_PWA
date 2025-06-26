@@ -14,43 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('online', updateOnlineStatus);
     window.addEventListener('offline', updateOnlineStatus);
 
-    // Додаємо слухача для кнопки
-    // checkOnlineStatusButton.addEventListener('click', updateOnlineStatus);
-
-    // function getCurrentDisplayMode() {
-    //     if (window.matchMedia('(display-mode: standalone)').matches) {
-    //         return 'standalone';
-    //     } else if (window.matchMedia('(display-mode: fullscreen)').matches) {
-    //         return 'fullscreen';
-    //     } else if (window.matchMedia('(display-mode: minimal-ui)').matches) {
-    //         return 'minimal-ui';
-    //     } else {
-    //         // Зазвичай це означає 'browser'
-    //         return 'browser';
-    //     }
-    // }
-
-    // console.log('Поточний display-mode:', getCurrentDisplayMode());
-
     initPwa();
     function initPwa() {
         let installPromptEvent = null;
         const installButton = document.getElementById('install_pwa');
 
-
-
-
-
-
-
-
-
-
-
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             installPromptEvent = e; // Store the event
-            // updateInstallButtonVisibility();
+            updateInstallButtonVisibility();
             console.log('beforeinstallprompt:' + installPromptEvent);
         });
 
@@ -65,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log(choiceResult)
                     if (choiceResult.outcome === 'accepted') {
                         console.log('User installed the PWA');
-                        // updateInstallButtonVisibility();
+                        updateInstallButtonVisibility();
                     } else {
                         console.log('User dismissed the installation');
                     }
@@ -75,50 +47,48 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 console.warn('Встановлення PWA зараз недоступне, або застосунок вже встановлено.');
                 console.log(installPromptEvent)
-                // updateInstallButtonVisibility();
-                // installButton.setAttribute('disabled', '');
             }
         });
 
-        // function updateInstallButtonVisibility() {
-        //     if (!installButton) return;
+        function updateInstallButtonVisibility() {
+            if (!installButton) return;
 
-        //     if (isRunningAsPWA()) {
-        //         installButton.setAttribute('disabled', '');
-        //         console.log('Сайт запущений як PWA. Кнопка встановлення прихована.');
-        //         return;
-        //     }
+            if (isRunningAsPWA()) {
+                installButton.setAttribute('disabled', '');
+                console.log('Сайт запущений як PWA. Кнопка встановлення прихована.');
+                return;
+            }
 
-        //     // 2. Якщо PWA не запущено як додаток, перевіряємо, чи браузер готовий запропонувати встановлення
-        //     // (тобто, чи спрацювала подія beforeinstallprompt і deferredPrompt зберігає подію)
-        //     console.log('installPromptEvent: ' + installPromptEvent);
-        //     console.log(window.matchMedia)
-        //     if (installPromptEvent) {
-        //         installButton.removeAttribute('disabled');
-        //         console.log('PWA може бути встановлено. Кнопка встановлення видима.');
-        //     } else {
-        //         // Якщо beforeinstallprompt ще не спрацював або вже був використаний/скинутий,
-        //         // і сайт не запущений як PWA.
-        //         // Це може статися, якщо користувач вже відхилив запит, або в режимі інкогніто,
-        //         // або якщо браузер ще не визначив PWA придатним для встановлення.
-        //         installButton.setAttribute('disabled', '');
-        //         console.log('PWA не може бути встановлено зараз (або вже встановлено, але не запущено як PWA). Кнопка прихована.');
-        //     }
-        // }
+            // 2. Якщо PWA не запущено як додаток, перевіряємо, чи браузер готовий запропонувати встановлення
+            // (тобто, чи спрацювала подія beforeinstallprompt і deferredPrompt зберігає подію)
+            console.log('installPromptEvent: ' + installPromptEvent);
+            console.log(window.matchMedia)
+            if (installPromptEvent) {
+                installButton.removeAttribute('disabled');
+                console.log('PWA може бути встановлено. Кнопка встановлення видима.');
+            } else {
+                // Якщо beforeinstallprompt ще не спрацював або вже був використаний/скинутий,
+                // і сайт не запущений як PWA.
+                // Це може статися, якщо користувач вже відхилив запит, або в режимі інкогніто,
+                // або якщо браузер ще не визначив PWA придатним для встановлення.
+                installButton.setAttribute('disabled', '');
+                console.log('PWA не може бути встановлено зараз (або вже встановлено, але не запущено як PWA). Кнопка прихована.');
+            }
+        }
 
-        // document.addEventListener('DOMContentLoaded', updateInstallButtonVisibility);
+        updateInstallButtonVisibility();
 
-        // window.matchMedia('(display-mode: standalone)').addEventListener('change', updateInstallButtonVisibility);
-        // window.matchMedia('(display-mode: fullscreen)').addEventListener('change', updateInstallButtonVisibility);
-        // window.matchMedia('(display-mode: minimal-ui)').addEventListener('change', updateInstallButtonVisibility);
+        window.matchMedia('(display-mode: standalone)').addEventListener('change', updateInstallButtonVisibility);
+        window.matchMedia('(display-mode: fullscreen)').addEventListener('change', updateInstallButtonVisibility);
+        window.matchMedia('(display-mode: minimal-ui)').addEventListener('change', updateInstallButtonVisibility);
 
-        // function isRunningAsPWA() {
-        //     return (
-        //         window.matchMedia('(display-mode: standalone)').matches ||
-        //         window.matchMedia('(display-mode: fullscreen)').matches ||
-        //         window.matchMedia('(display-mode: minimal-ui)').matches
-        //     );
-        // }
+        function isRunningAsPWA() {
+            return (
+                window.matchMedia('(display-mode: standalone)').matches ||
+                window.matchMedia('(display-mode: fullscreen)').matches ||
+                window.matchMedia('(display-mode: minimal-ui)').matches
+            );
+        }
     }
 
     askNotifications();
