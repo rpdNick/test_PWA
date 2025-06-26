@@ -78,6 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 2. Якщо PWA не запущено як додаток, перевіряємо, чи браузер готовий запропонувати встановлення
             // (тобто, чи спрацювала подія beforeinstallprompt і deferredPrompt зберігає подію)
+            console.log('installPromptEvent: ' + installPromptEvent);
+            console.log(window.matchMedia)
             if (installPromptEvent) {
                 installButton.removeAttribute('disabled');
                 console.log('PWA може бути встановлено. Кнопка встановлення видима.');
@@ -96,14 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
         window.matchMedia('(display-mode: standalone)').addEventListener('change', updateInstallButtonVisibility);
         window.matchMedia('(display-mode: fullscreen)').addEventListener('change', updateInstallButtonVisibility);
         window.matchMedia('(display-mode: minimal-ui)').addEventListener('change', updateInstallButtonVisibility);
-    }
 
-    function isRunningAsPWA() {
-        return (
-            window.matchMedia('(display-mode: standalone)').matches ||
-            window.matchMedia('(display-mode: fullscreen)').matches ||
-            window.matchMedia('(display-mode: minimal-ui)').matches
-        );
+        function isRunningAsPWA() {
+            return (
+                window.matchMedia('(display-mode: standalone)').matches ||
+                window.matchMedia('(display-mode: fullscreen)').matches ||
+                window.matchMedia('(display-mode: minimal-ui)').matches
+            );
+        }
     }
 
     askNotifications();

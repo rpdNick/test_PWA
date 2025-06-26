@@ -59,7 +59,7 @@ self.addEventListener('fetch', event => {
         }
 
         // Ресурс не знайдено в кеші, йдемо в мережу
-        console.log('Service Worker: Запит до мережі для', event.request.url);
+        // console.log('Service Worker: Запит до мережі для', event.request.url);
         return fetch(event.request)
           .then(networkResponse => {
             // Перевіряємо, чи отримали ми дійсну відповідь
