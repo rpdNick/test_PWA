@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        
+
 
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
@@ -54,30 +54,31 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('beforeinstallprompt:' + installPromptEvent);
         });
 
-        // installButton.addEventListener('click', () => {
-        //     console.log('install PWA click');
-        //     if (installPromptEvent) {
-        //         // Trigger the browser's install prompt
-        //         installPromptEvent.prompt();
-        //         console.log(installPromptEvent);
+        installButton.addEventListener('click', () => {
+            console.log('install PWA click');
+            if (installPromptEvent) {
+                // Trigger the browser's install prompt
+                installPromptEvent.prompt();
+                console.log(installPromptEvent);
 
-        //         installPromptEvent.userChoice.then((choiceResult) => {
-        //             console.log(choiceResult)
-        //             if (choiceResult.outcome === 'accepted') {
-        //                 console.log('User installed the PWA');
-        //                 updateInstallButtonVisibility();
-        //             } else {
-        //                 console.log('User dismissed the installation');
-        //             }
+                installPromptEvent.userChoice.then((choiceResult) => {
+                    console.log(choiceResult)
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User installed the PWA');
+                        // updateInstallButtonVisibility();
+                    } else {
+                        console.log('User dismissed the installation');
+                    }
 
-        //             installPromptEvent = null;
-        //         });
-        //     } else {
-        //         console.warn('Встановлення PWA зараз недоступне, або застосунок вже встановлено.');
-        //         console.log(installPromptEvent)
-        //         installButton.setAttribute('disabled', '');
-        //     }
-        // });
+                    installPromptEvent = null;
+                });
+            } else {
+                console.warn('Встановлення PWA зараз недоступне, або застосунок вже встановлено.');
+                console.log(installPromptEvent)
+                // updateInstallButtonVisibility();
+                // installButton.setAttribute('disabled', '');
+            }
+        });
 
         // function updateInstallButtonVisibility() {
         //     if (!installButton) return;
