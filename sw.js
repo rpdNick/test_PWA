@@ -20,7 +20,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME) // Відкриваємо або створюємо кеш
       .then(cache => {
-        console.log('Service Worker: Кешування основних ресурсів');
+        // console.log('Service Worker: Кешування основних ресурсів');
         return cache.addAll(urlsToCache); // Додаємо всі файли до кешу
       })
       .then(() => self.skipWaiting()) // Примусово активуємо Service Worker негайно
@@ -35,7 +35,7 @@ self.addEventListener('activate', event => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheName !== CACHE_NAME) { // Видаляємо старі кеші
-            console.log('Service Worker: Видалення старого кешу:', cacheName);
+            // console.log('Service Worker: Видалення старого кешу:', cacheName);
             return caches.delete(cacheName);
           }
         })
@@ -54,7 +54,7 @@ self.addEventListener('fetch', event => {
     caches.match(event.request)
       .then(response => {
         if (response) {
-          console.log('Service Worker: Відповідь з кешу для', event.request.url);
+          // console.log('Service Worker: Відповідь з кешу для', event.request.url);
           return response; // Ресурс знайдено в кеші, повертаємо його
         }
 
