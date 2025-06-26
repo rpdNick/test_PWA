@@ -79,7 +79,7 @@ button[disabled]{
 button:disabled:hover {
     background-color: #999999;
     color: #666666;
-    cursor: none;
+    cursor: unset;
 }
 
 .install_block > button {
