@@ -66,8 +66,20 @@ footer {
     align-items: center;
 }
 
-.installed {
+/* .installed {
     display: none;
+} */
+
+button:disabled,
+button[disabled]{
+    background-color: #999999;
+    color: #666666;
+}
+
+button:disabled:hover {
+    background-color: #999999;
+    color: #666666;
+    cursor: none;
 }
 
 .install_block > button {
