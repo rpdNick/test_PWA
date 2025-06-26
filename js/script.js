@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             installPromptEvent = e; // Store the event
             updateInstallButtonVisibility();
+            console.log('beforeinstallprompt:' + installPromptEvent);
         });
 
         installButton.addEventListener('click', () => {
