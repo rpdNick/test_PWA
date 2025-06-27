@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('offline', updateOnlineStatus);
 
     initPwa();
+    // Customizing the Install Prompt:
+
     function initPwa() {
         let installPromptEvent = null;
         const installButton = document.getElementById('install_pwa');
@@ -23,13 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             installPromptEvent = e; // Store the event
             updateInstallButtonVisibility();
-            console.log('beforeinstallprompt:' + installPromptEvent);
         });
 
         installButton.addEventListener('click', () => {
             console.log('install PWA click');
             if (installPromptEvent) {
-                // Trigger the browser's install prompt
                 installPromptEvent.prompt();
                 console.log(installPromptEvent);
 
@@ -59,18 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // 2. Якщо PWA не запущено як додаток, перевіряємо, чи браузер готовий запропонувати встановлення
-            // (тобто, чи спрацювала подія beforeinstallprompt і deferredPrompt зберігає подію)
             console.log('installPromptEvent: ' + installPromptEvent);
             console.log(window.matchMedia)
             if (installPromptEvent) {
                 installButton.removeAttribute('disabled');
                 console.log('PWA може бути встановлено. Кнопка встановлення видима.');
             } else {
-                // Якщо beforeinstallprompt ще не спрацював або вже був використаний/скинутий,
-                // і сайт не запущений як PWA.
-                // Це може статися, якщо користувач вже відхилив запит, або в режимі інкогніто,
-                // або якщо браузер ще не визначив PWA придатним для встановлення.
                 installButton.setAttribute('disabled', '');
                 console.log('PWA не може бути встановлено зараз (або вже встановлено, але не запущено як PWA). Кнопка прихована.');
             }
