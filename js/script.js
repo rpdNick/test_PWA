@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 Get PushSubscription from console.log:
 {
-    "endpoint": "https://fcm.googleapis.com/fcm/send/f5Hfh-sras8:APA91bGgC7dU7O7pQ25_OmIPxvqL-r3Ehw1xlBa7t0y03owvBgfZjkGJHUJdxFeEeFhbkPEI79lusXamf0b8XxD_5lvQjzIL6RrIQSE1PFcCHo_alWo8Cu3QMdtwP3IHabidTvou8Yvb",
+    "endpoint": "https://fcm.googleapis.com/fcm/send/c5QnzV3QiPY:APA91bHPJgJ7e0yGGartWs-Kws4a0jacDmcU10t2UgrvJ6VhwIfra7kOhJmJ7gnr6VnC4EvX7mk6KHx3xx--nYIJcfuvsQnx_fH98Hm_WuRVo-UMKmg-Yq6JHB1mLSImdVQ5IXFMoXEc",
     "expirationTime": null,
     "keys": {
         "p256dh": "BPzWjEiDdX24FmesMzI2n2rX95F2cvyc9-pxgoQGVz5Zi9NMguWvG_tScrwGrvZUeZDXcVpKRW0msgWVZuMXMYo",
