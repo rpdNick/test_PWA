@@ -129,7 +129,7 @@ function askNotifications() {
 
 function subscribeUserToPush() {
     navigator.serviceWorker.ready.then(registration => {
-        const applicationServerKey = urlBase64ToUint8Array('BGtcy5rKEuF1WMl3puOS1LOQkD_fI6V0TPXzyrrt6UWqTCPpCay2W9wSlwn5kyZoMALTW6HXzHh7zxwE_mE2KHc'); // Перетворіть ваш публічний ключ VAPID
+        const applicationServerKey = urlBase64ToUint8Array('BOYGqFP5Ii9Ncb_QjZOwMzCSdjXKkwGHLS-7F_nBrz_peFTZMnnCUvmf4bQWhVPcv0j0xtXSy6ni_JAohFNcUss'); // Перетворіть ваш публічний ключ VAPID
         registration.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: applicationServerKey
