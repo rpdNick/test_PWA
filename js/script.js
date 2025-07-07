@@ -78,12 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateInstallButtonState();
     }
 
-    initPwa();
-
-    document.onclick = function () {
-        askNotifications();
-    }
-
     function askNotifications() {
         if ('Notification' in window) {
             Notification.requestPermission().then(permission => {
@@ -99,6 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    initPwa();
+    askNotifications();
 });
 
 
