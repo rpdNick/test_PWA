@@ -116,12 +116,14 @@ Text to Send:
 function askNotifications() {
     if ('Notification' in window) {
         Notification.requestPermission().then(permission => {
-            if (permission === 'granted') {
-                console.log('Дозвіл на сповіщення надано.');
-                // Тепер ви можете підписатися на push-повідомлення
-                subscribeUserToPush();
-            } else {
-                console.log('Дозвіл на сповіщення відхилено.');
+            document.onclick = function () {
+                if (permission === 'granted') {
+                    console.log('Дозвіл на сповіщення надано.');
+                    // Тепер ви можете підписатися на push-повідомлення
+                    subscribeUserToPush();
+                } else {
+                    console.log('Дозвіл на сповіщення відхилено.');
+                }
             }
         });
     }
