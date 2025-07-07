@@ -92,11 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 Get PushSubscription from console.log:
 {
-    "endpoint": "https://fcm.googleapis.com/fcm/send/c5QnzV3QiPY:APA91bHPJgJ7e0yGGartWs-Kws4a0jacDmcU10t2UgrvJ6VhwIfra7kOhJmJ7gnr6VnC4EvX7mk6KHx3xx--nYIJcfuvsQnx_fH98Hm_WuRVo-UMKmg-Yq6JHB1mLSImdVQ5IXFMoXEc",
-    "expirationTime": null,
+    endpoint: "https://fcm.googleapis.com/fcm/send/eabykqNY9AU:APA91bEEa4h4hYan4nh0TaCiHim2nFaj1XxEP4646YtKb6A1XXBk4d19ZWiIMYd4jpZZwcCElmpsej2xiZ9vO4ZbGQnZ7CNFensTH9e2SFFk3A5epMNlNjhgXaUYeh8K1dEzOzCSxdII"
+    expirationTime: null
     "keys": {
-        "p256dh": "BPzWjEiDdX24FmesMzI2n2rX95F2cvyc9-pxgoQGVz5Zi9NMguWvG_tScrwGrvZUeZDXcVpKRW0msgWVZuMXMYo",
-        "auth": "MRR3XlkIzguAxlgAMnYf_g"
+        "p256dh": "BCAQnFAFVevxATMnppbkpOJGgOOPGoVOu3gspspFxSpFYWTYeVJ8lSARctafbsdbuRf0tbmAwKIz0IfLbmQ8_gs",
+        "auth": "scfUMgTh1V420C9iQYEo4KK2YNnHxVBM-RgHEWfB-O4"
     }
 }
 
@@ -136,7 +136,7 @@ function subscribeUserToPush() {
         })
             .then(subscription => {
                 console.log('Користувач підписався:', subscription);
-                // sendSubscriptionToServer(subscription);
+                sendSubscriptionToServer(subscription);
             })
             .catch(error => {
                 console.error('Не вдалося підписатися на push-сповіщення:', error);
