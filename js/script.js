@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Додаємо слухачів подій для відстеження змін статусу
     window.addEventListener('online', updateOnlineStatus);
     window.addEventListener('offline', updateOnlineStatus);
-
-    initPwa();
     // Customizing the Install Prompt:
 
     function initPwa() {
@@ -80,8 +78,27 @@ document.addEventListener('DOMContentLoaded', () => {
         updateInstallButtonState();
     }
 
+    initPwa();
 
-    askNotifications();
+    document.onclick = function () {
+        askNotifications();
+    }
+
+    function askNotifications() {
+        if ('Notification' in window) {
+            Notification.requestPermission().then(permission => {
+
+                if (permission === 'granted') {
+                    console.log('Дозвіл на сповіщення надано.');
+                    // Тепер ви можете підписатися на push-повідомлення
+                    subscribeUserToPush();
+                } else {
+                    console.log('Дозвіл на сповіщення відхилено.');
+                }
+
+            });
+        }
+    }
 });
 
 
@@ -113,22 +130,6 @@ Text to Send:
 
 */
 
-function askNotifications() {
-    if ('Notification' in window) {
-        Notification.requestPermission().then(permission => {
-            document.onclick = function () {
-                if (permission === 'granted') {
-                    console.log('Дозвіл на сповіщення надано.');
-                    // Тепер ви можете підписатися на push-повідомлення
-                    subscribeUserToPush();
-                } else {
-                    console.log('Дозвіл на сповіщення відхилено.');
-                }
-            }
-        });
-    }
-}
-
 function subscribeUserToPush() {
     navigator.serviceWorker.ready.then(registration => {
         const applicationServerKey = urlBase64ToUint8Array('BJSt032OJqlfoHxPIke1J2oQMSkyXgFQu-459dTuVAv7-nC2gQIk-cHB78a69Du1I6Odi2umoANW8-jR9kUeuPY'); // Перетворіть ваш публічний ключ VAPID
@@ -138,13 +139,14 @@ function subscribeUserToPush() {
         })
             .then(subscription => {
                 console.log('Користувач підписався:', subscription);
-                sendSubscriptionToServer(subscription);
+                // sendSubscriptionToServer(subscription);
             })
             .catch(error => {
                 console.error('Не вдалося підписатися на push-сповіщення:', error);
             });
     });
 }
+
 
 // Допоміжна функція для перетворення base64 URL на Uint8Array
 function urlBase64ToUint8Array(base64String) {
