@@ -2,8 +2,8 @@ const webpush = require('web-push');
 
 // 🔐 Встав сюди свої ключі VAPID
 const vapidKeys = {
-    publicKey: 'BJSt032OJqlfoHxPIke1J2oQMSkyXgFQu-459dTuVAv7-nC2gQIk-cHB78a69Du1I6Odi2umoANW8-jR9kUeuPY',
-    privateKey: 'WJ3s6f0U9yL7QKXfM3ds7xNBSOqgAj1CPQuO9sA1XNI'
+    publicKey: 'BGFzlsNrqsgQUum-2KMmxmgMUl9nZhkvRBMITDOB__dWROhLGZ_AfJAuvXW15nSezP1VzOmPk-LCCbKa-UZv9Ac',
+    privateKey: 'RXCS-bx4P-shsnuzMV2uaHPjU6m5257cibGr12Wwq2w'
 };
 
 // Налаштовуємо VAPID
@@ -24,14 +24,13 @@ webpush.setVapidDetails(
 // };
 
 const pushSubscription = {
-    endpoint: "https://fcm.googleapis.com/fcm/send/ea7u47oHrTw:APA91bETW5ijWMUNbQCJbq0eDk5z-CtAgqz7QriOh-voW9SlSfLAtd_CfKG0cWlGcZXetrOhRfetTsi9ClFUdrU_RQMxrP7q0O6e9AmwCtGT-U5nCSg5xX5EvgBEeymsTz8LJirsrCzo",
+    endpoint: "https://fcm.googleapis.com/fcm/send/ctLA-wy3EjU:APA91bGVKYn6A6yQY4k5jR2uOxuZTk5n0tKB6z8r5WJzjjY9ei3D-SR5VE7XR5rMekWLzdCYjBM3Oi25s47YehaSaeNxFNayxFK4B4ZRZyPz0LgO9FT-6Z1XWXQlzlEysJXN_Gki9abq",
     expirationTime: null,
     keys: {
-        "p256dh": "BHN71CJles2ok0WTSFgApIjtSdCgBqZm2uGojrEgvkUfdg26_-FR8M643mheYZTa10EsOT63354YML46ctWknek",
-        "auth": "ljOUN6KofcaWphjFEXUDqw"
+        "p256dh": "BIxrLUSh1_07H_jFVSBuC6LSR4O9ue8FI7VpyvrFkICQuGik2WhFz29Plp4_v0n60GFRH3bio0TRwoJfnt8eyY0",
+        "auth": "yYnhqSXwtdGUK2qCnSEMww"
     }
 };
-
 
 
 // 🔔 Що буде в пуші
