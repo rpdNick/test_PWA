@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function askNotifications() {
+        console.log('askNotifications')
         if ('Notification' in window) {
             Notification.requestPermission().then(permission => {
 
@@ -95,7 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initPwa();
-    askNotifications();
+    document.onclick = function () {
+        askNotifications();
+    }
 });
 
 
